@@ -1084,6 +1084,7 @@
       <div class="admin-tabs">
         <div class="admin-tab active" onclick="switchAdminTab('reservas')" id="tab-reservas">🎟️ Reservas / Números</div>
         <div class="admin-tab" onclick="switchAdminTab('config')" id="tab-config">⚙️ Configurações & Nuvem</div>
+        <div class="admin-tab" onclick="switchAdminTab('premios')" id="tab-premios">🎁 Imagens & Prêmios</div>
       </div>
       
       <div class="admin-body">
@@ -1199,6 +1200,87 @@
             
           </div>
         </div>
+
+        <!-- ABA 3: IMAGENS & PRÊMIOS -->
+        <div class="admin-tab-content" id="content-premios" style="display:none;">
+          <div style="display:grid; grid-template-columns:1fr; gap:20px; flex-wrap:wrap;">
+            
+            <!-- Banner -->
+            <div style="background-color:rgba(255,255,255,0.02); border:1px solid var(--gray-border); border-radius:var(--radius-md); padding:20px;">
+              <h4 style="font-family:var(--font-display); color:var(--primary); font-size:16px; margin-bottom:16px; border-bottom:1px solid var(--gray-border); padding-bottom:8px;">🖼️ Banner do Site</h4>
+              <div class="form-group" style="display:flex; align-items:flex-end; gap:10px;">
+                <div style="flex:1;">
+                  <label class="form-label" for="cfgBannerImg">URL ou Caminho da Imagem do Cabeçalho</label>
+                  <input type="text" id="cfgBannerImg" class="form-input" placeholder="CABEÇARIO-SITE.jpg">
+                </div>
+                <div>
+                  <input type="file" id="fileBannerImg" accept="image/*" style="display:none" onchange="convertImageToBase64(event, 'cfgBannerImg', 'previewBannerImg')">
+                  <button class="btn-copy" onclick="document.getElementById('fileBannerImg').click()" style="padding:10px; height:42px;">Escolher Arquivo 📁</button>
+                </div>
+              </div>
+              <div style="margin-top:10px;">
+                <img id="previewBannerImg" src="" style="max-width:100%; max-height:100px; display:none; border-radius:var(--radius-sm); border:1px solid var(--gray-border);">
+              </div>
+            </div>
+
+            <!-- Premio 1 -->
+            <div style="background-color:rgba(255,255,255,0.02); border:1px solid var(--gray-border); border-radius:var(--radius-md); padding:20px;">
+              <h4 style="font-family:var(--font-display); color:var(--primary); font-size:16px; margin-bottom:16px; border-bottom:1px solid var(--gray-border); padding-bottom:8px;">🎁 1º Prêmio</h4>
+              <div class="form-group">
+                <label class="form-label" for="cfgPrize1Title">Título do Prêmio</label>
+                <input type="text" id="cfgPrize1Title" class="form-input" placeholder="Ex: Capacete EBF 7">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cfgPrize1Desc">Descrição</label>
+                <textarea id="cfgPrize1Desc" class="form-input" style="height:60px; resize:vertical;"></textarea>
+              </div>
+              <div class="form-group" style="display:flex; align-items:flex-end; gap:10px;">
+                <div style="flex:1;">
+                  <label class="form-label" for="cfgPrize1Img">URL ou Caminho da Imagem</label>
+                  <input type="text" id="cfgPrize1Img" class="form-input" placeholder="Capacete EBF 7.png">
+                </div>
+                <div>
+                  <input type="file" id="filePrize1Img" accept="image/*" style="display:none" onchange="convertImageToBase64(event, 'cfgPrize1Img', 'previewPrize1Img')">
+                  <button class="btn-copy" onclick="document.getElementById('filePrize1Img').click()" style="padding:10px; height:42px;">Escolher Arquivo 📁</button>
+                </div>
+              </div>
+              <div style="margin-top:10px;">
+                <img id="previewPrize1Img" src="" style="max-width:100%; max-height:100px; display:none; border-radius:var(--radius-sm); border:1px solid var(--gray-border);">
+              </div>
+            </div>
+
+            <!-- Premio 2 -->
+            <div style="background-color:rgba(255,255,255,0.02); border:1px solid var(--gray-border); border-radius:var(--radius-md); padding:20px;">
+              <h4 style="font-family:var(--font-display); color:var(--primary); font-size:16px; margin-bottom:16px; border-bottom:1px solid var(--gray-border); padding-bottom:8px;">🎁 2º Prêmio</h4>
+              <div class="form-group">
+                <label class="form-label" for="cfgPrize2Title">Título do Prêmio</label>
+                <input type="text" id="cfgPrize2Title" class="form-input" placeholder="Ex: Compressor Portátil">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cfgPrize2Desc">Descrição</label>
+                <textarea id="cfgPrize2Desc" class="form-input" style="height:60px; resize:vertical;"></textarea>
+              </div>
+              <div class="form-group" style="display:flex; align-items:flex-end; gap:10px;">
+                <div style="flex:1;">
+                  <label class="form-label" for="cfgPrize2Img">URL ou Caminho da Imagem</label>
+                  <input type="text" id="cfgPrize2Img" class="form-input" placeholder="COMRPESSOR.png">
+                </div>
+                <div>
+                  <input type="file" id="filePrize2Img" accept="image/*" style="display:none" onchange="convertImageToBase64(event, 'cfgPrize2Img', 'previewPrize2Img')">
+                  <button class="btn-copy" onclick="document.getElementById('filePrize2Img').click()" style="padding:10px; height:42px;">Escolher Arquivo 📁</button>
+                </div>
+              </div>
+              <div style="margin-top:10px;">
+                <img id="previewPrize2Img" src="" style="max-width:100%; max-height:100px; display:none; border-radius:var(--radius-sm); border:1px solid var(--gray-border);">
+              </div>
+            </div>
+            
+            <div style="border-top:1px solid var(--gray-border); padding-top:14px; margin-top:10px;">
+              <button class="btn-checkout" onclick="saveAdminSettings()" style="width:100%; border-radius:var(--radius-sm);">Salvar Configurações e Prêmios 💾</button>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1225,9 +1307,12 @@
     let isDbConnected = false;
     let dbListenerRef = null;
 
-    // Títulos de prêmios iniciais
+    // Imagens e Títulos de prêmios iniciais
+    let bannerImg = "CABEÇARIO-SITE.jpg";
+    let prize1Img = "Capacete EBF 7.png";
     let prize1Title = "Capacete EBF 7";
     let prize1Desc = "Capacete moderno e seguro EBF 7, com excelente ventilação e design aerodinâmico.";
+    let prize2Img = "COMRPESSOR.png";
     let prize2Title = "Compressor Portátil";
     let prize2Desc = "Mini compressor portátil inteligente para encher pneus de moto, carro e bicicleta rapidamente.";
 
@@ -1262,18 +1347,13 @@
       if (localStorage.getItem('raffle_pix')) {
         PIX_KEY = localStorage.getItem('raffle_pix');
       }
-      if (localStorage.getItem('raffle_p1_title')) {
-        prize1Title = localStorage.getItem('raffle_p1_title');
-      }
-      if (localStorage.getItem('raffle_p1_desc')) {
-        prize1Desc = localStorage.getItem('raffle_p1_desc');
-      }
-      if (localStorage.getItem('raffle_p2_title')) {
-        prize2Title = localStorage.getItem('raffle_p2_title');
-      }
-      if (localStorage.getItem('raffle_p2_desc')) {
-        prize2Desc = localStorage.getItem('raffle_p2_desc');
-      }
+      if (localStorage.getItem('raffle_banner_img')) bannerImg = localStorage.getItem('raffle_banner_img');
+      if (localStorage.getItem('raffle_p1_img')) prize1Img = localStorage.getItem('raffle_p1_img');
+      if (localStorage.getItem('raffle_p1_title')) prize1Title = localStorage.getItem('raffle_p1_title');
+      if (localStorage.getItem('raffle_p1_desc')) prize1Desc = localStorage.getItem('raffle_p1_desc');
+      if (localStorage.getItem('raffle_p2_img')) prize2Img = localStorage.getItem('raffle_p2_img');
+      if (localStorage.getItem('raffle_p2_title')) prize2Title = localStorage.getItem('raffle_p2_title');
+      if (localStorage.getItem('raffle_p2_desc')) prize2Desc = localStorage.getItem('raffle_p2_desc');
     }
 
     function saveState() {
@@ -1644,6 +1724,18 @@
       document.getElementById('cfgSorteioDate').value = SORTEIO_DATE;
       document.getElementById('cfgAdminWhats').value = ADMIN_WHATS;
       document.getElementById('cfgPixKey').value = PIX_KEY;
+      
+      document.getElementById('cfgBannerImg').value = bannerImg;
+      document.getElementById('cfgPrize1Img').value = prize1Img;
+      document.getElementById('cfgPrize1Title').value = prize1Title;
+      document.getElementById('cfgPrize1Desc').value = prize1Desc;
+      document.getElementById('cfgPrize2Img').value = prize2Img;
+      document.getElementById('cfgPrize2Title').value = prize2Title;
+      document.getElementById('cfgPrize2Desc').value = prize2Desc;
+      
+      if(bannerImg.startsWith('data:')) { document.getElementById('previewBannerImg').src = bannerImg; document.getElementById('previewBannerImg').style.display = 'block'; }
+      if(prize1Img.startsWith('data:')) { document.getElementById('previewPrize1Img').src = prize1Img; document.getElementById('previewPrize1Img').style.display = 'block'; }
+      if(prize2Img.startsWith('data:')) { document.getElementById('previewPrize2Img').src = prize2Img; document.getElementById('previewPrize2Img').style.display = 'block'; }
 
       // Firebase
       document.getElementById('cfgDbUrl').value = localStorage.getItem('raffle_db_url') || '';
@@ -1675,11 +1767,25 @@
       SORTEIO_DATE = dateVal;
       ADMIN_WHATS = whatsVal;
       PIX_KEY = pixVal;
+      bannerImg = document.getElementById('cfgBannerImg').value.trim() || bannerImg;
+      prize1Img = document.getElementById('cfgPrize1Img').value.trim() || prize1Img;
+      prize1Title = document.getElementById('cfgPrize1Title').value.trim() || prize1Title;
+      prize1Desc = document.getElementById('cfgPrize1Desc').value.trim() || prize1Desc;
+      prize2Img = document.getElementById('cfgPrize2Img').value.trim() || prize2Img;
+      prize2Title = document.getElementById('cfgPrize2Title').value.trim() || prize2Title;
+      prize2Desc = document.getElementById('cfgPrize2Desc').value.trim() || prize2Desc;
 
       localStorage.setItem('raffle_price', PRICE);
       localStorage.setItem('raffle_date', SORTEIO_DATE);
       localStorage.setItem('raffle_whats', ADMIN_WHATS);
       localStorage.setItem('raffle_pix', PIX_KEY);
+      localStorage.setItem('raffle_banner_img', bannerImg);
+      localStorage.setItem('raffle_p1_img', prize1Img);
+      localStorage.setItem('raffle_p1_title', prize1Title);
+      localStorage.setItem('raffle_p1_desc', prize1Desc);
+      localStorage.setItem('raffle_p2_img', prize2Img);
+      localStorage.setItem('raffle_p2_title', prize2Title);
+      localStorage.setItem('raffle_p2_desc', prize2Desc);
 
       // Sincroniza nuvem
       if (firebaseDb && isDbConnected) {
@@ -1687,6 +1793,13 @@
         firebaseDb.ref('raffle/config/sorteioDate').set(SORTEIO_DATE);
         firebaseDb.ref('raffle/config/pixKey').set(PIX_KEY);
         firebaseDb.ref('raffle/config/adminWhats').set(ADMIN_WHATS);
+        firebaseDb.ref('raffle/config/bannerImg').set(bannerImg);
+        firebaseDb.ref('raffle/config/prize1Img').set(prize1Img);
+        firebaseDb.ref('raffle/config/prize1Title').set(prize1Title);
+        firebaseDb.ref('raffle/config/prize1Desc').set(prize1Desc);
+        firebaseDb.ref('raffle/config/prize2Img').set(prize2Img);
+        firebaseDb.ref('raffle/config/prize2Title').set(prize2Title);
+        firebaseDb.ref('raffle/config/prize2Desc').set(prize2Desc);
       }
 
       applyUIConfigs();
@@ -1694,10 +1807,40 @@
       showToast('💾 Configurações salvas com sucesso!');
     }
 
+    function convertImageToBase64(event, inputId, previewId) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById(inputId).value = e.target.result;
+        const preview = document.getElementById(previewId);
+        preview.src = e.target.result;
+        preview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+
     function applyUIConfigs() {
       document.getElementById('uiPriceText').innerText = `R$ ${PRICE.toFixed(2).replace('.', ',')}`;
       document.getElementById('uiDateText').innerText = SORTEIO_DATE;
       document.getElementById('uiPixKey').innerText = PIX_KEY;
+      
+      const elBanner = document.getElementById('bannerImg');
+      if (elBanner) elBanner.src = bannerImg;
+      
+      const elPrize1Img = document.getElementById('uiPrize1Img');
+      if (elPrize1Img) elPrize1Img.src = prize1Img;
+      const elPrize1Title = document.getElementById('uiPrize1Title');
+      if (elPrize1Title) elPrize1Title.innerText = prize1Title;
+      const elPrize1Desc = document.getElementById('uiPrize1Desc');
+      if (elPrize1Desc) elPrize1Desc.innerText = prize1Desc;
+      
+      const elPrize2Img = document.getElementById('uiPrize2Img');
+      if (elPrize2Img) elPrize2Img.src = prize2Img;
+      const elPrize2Title = document.getElementById('uiPrize2Title');
+      if (elPrize2Title) elPrize2Title.innerText = prize2Title;
+      const elPrize2Desc = document.getElementById('uiPrize2Desc');
+      if (elPrize2Desc) elPrize2Desc.innerText = prize2Desc;
     }
 
     function confirmResetRaffle() {
@@ -2017,6 +2160,41 @@
           if (data.config.adminWhats !== undefined && data.config.adminWhats !== ADMIN_WHATS) {
             ADMIN_WHATS = data.config.adminWhats;
             localStorage.setItem('raffle_whats', ADMIN_WHATS);
+            hasUpdates = true;
+          }
+          if (data.config.bannerImg !== undefined && data.config.bannerImg !== bannerImg) {
+            bannerImg = data.config.bannerImg;
+            localStorage.setItem('raffle_banner_img', bannerImg);
+            hasUpdates = true;
+          }
+          if (data.config.prize1Img !== undefined && data.config.prize1Img !== prize1Img) {
+            prize1Img = data.config.prize1Img;
+            localStorage.setItem('raffle_p1_img', prize1Img);
+            hasUpdates = true;
+          }
+          if (data.config.prize1Title !== undefined && data.config.prize1Title !== prize1Title) {
+            prize1Title = data.config.prize1Title;
+            localStorage.setItem('raffle_p1_title', prize1Title);
+            hasUpdates = true;
+          }
+          if (data.config.prize1Desc !== undefined && data.config.prize1Desc !== prize1Desc) {
+            prize1Desc = data.config.prize1Desc;
+            localStorage.setItem('raffle_p1_desc', prize1Desc);
+            hasUpdates = true;
+          }
+          if (data.config.prize2Img !== undefined && data.config.prize2Img !== prize2Img) {
+            prize2Img = data.config.prize2Img;
+            localStorage.setItem('raffle_p2_img', prize2Img);
+            hasUpdates = true;
+          }
+          if (data.config.prize2Title !== undefined && data.config.prize2Title !== prize2Title) {
+            prize2Title = data.config.prize2Title;
+            localStorage.setItem('raffle_p2_title', prize2Title);
+            hasUpdates = true;
+          }
+          if (data.config.prize2Desc !== undefined && data.config.prize2Desc !== prize2Desc) {
+            prize2Desc = data.config.prize2Desc;
+            localStorage.setItem('raffle_p2_desc', prize2Desc);
             hasUpdates = true;
           }
         }
