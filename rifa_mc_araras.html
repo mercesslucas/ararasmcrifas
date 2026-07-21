@@ -1583,16 +1583,22 @@
       // Tabs active toggle
       document.getElementById('tab-reservas').classList.remove('active');
       document.getElementById('tab-config').classList.remove('active');
+      document.getElementById('tab-premios').classList.remove('active');
+      
       document.getElementById('content-reservas').style.display = 'none';
       document.getElementById('content-config').style.display = 'none';
+      document.getElementById('content-premios').style.display = 'none';
 
       if (tabName === 'reservas') {
         document.getElementById('tab-reservas').classList.add('active');
         document.getElementById('content-reservas').style.display = 'block';
         renderAdminTable();
-      } else {
+      } else if (tabName === 'config') {
         document.getElementById('tab-config').classList.add('active');
         document.getElementById('content-config').style.display = 'block';
+      } else if (tabName === 'premios') {
+        document.getElementById('tab-premios').classList.add('active');
+        document.getElementById('content-premios').style.display = 'block';
       }
     }
 
