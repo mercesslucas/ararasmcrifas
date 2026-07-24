@@ -2051,8 +2051,7 @@
           databaseURL: dbUrl,
           projectId: dbProjectId
         };
-
-        if (firebase.apps.length === 0) {
+        if (!firebase.apps.length || !firebase.apps.find(app => app.name === '[DEFAULT]')) {
           firebase.initializeApp(config);
         }
         
