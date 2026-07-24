@@ -1744,9 +1744,9 @@
       if(prize2Img.startsWith('data:')) { document.getElementById('previewPrize2Img').src = prize2Img; document.getElementById('previewPrize2Img').style.display = 'block'; }
 
       // Firebase
-      document.getElementById('cfgDbUrl').value = localStorage.getItem('raffle_db_url') || '';
-      document.getElementById('cfgDbApiKey').value = localStorage.getItem('raffle_db_apikey') || '';
-      document.getElementById('cfgDbProjectId').value = localStorage.getItem('raffle_db_projectid') || '';
+      document.getElementById('cfgDbUrl').value = localStorage.getItem('raffle_db_url') || 'https://ararasmc-2025-default-rtdb.firebaseio.com';
+      document.getElementById('cfgDbApiKey').value = localStorage.getItem('raffle_db_apikey') || 'BPpFnyXtA-Ya_RoW-DrUeLLjBehFN-IpOuA9Xe04Atpe7KlwBPmszvDBgTLmbpqkHFYkI8PgxCAsUIOyWqTMYr0';
+      document.getElementById('cfgDbProjectId').value = localStorage.getItem('raffle_db_projectid') || 'ararasmc-2025';
     }
 
     // Salvar configurações administrativas gerais
@@ -2035,9 +2035,10 @@
     }
 
     function initFirebase() {
-      const dbUrl = localStorage.getItem('raffle_db_url');
-      const dbApiKey = localStorage.getItem('raffle_db_apikey');
-      const dbProjectId = localStorage.getItem('raffle_db_projectid');
+      // Credenciais Globais Definitivas
+      const dbUrl = "https://ararasmc-2025-default-rtdb.firebaseio.com";
+      const dbApiKey = "BPpFnyXtA-Ya_RoW-DrUeLLjBehFN-IpOuA9Xe04Atpe7KlwBPmszvDBgTLmbpqkHFYkI8PgxCAsUIOyWqTMYr0";
+      const dbProjectId = "ararasmc-2025";
 
       if (!dbUrl || !dbApiKey || !dbProjectId) {
         updateDbStatusUI(false, "Desconectado (LocalStorage local)");
