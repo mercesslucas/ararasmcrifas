@@ -948,6 +948,18 @@
           <p class="prize-desc" id="uiPrize2Desc">Mini compressor portátil inteligente para encher pneus de moto, carro e bicicleta rapidamente.</p>
         </div>
       </div>
+      
+      <!-- 3º Prêmio -->
+      <div class="prize-card" id="uiPrize3Container">
+        <div class="prize-image-container">
+          <img src="kit-ferramentas.png" alt="3º Prêmio" class="prize-image" id="uiPrize3Img">
+        </div>
+        <div class="prize-details">
+          <span class="prize-badge" style="background:var(--secondary); color:black;">3º Prêmio</span>
+          <h3 class="prize-title" id="uiPrize3Title">Kit Ferramentas</h3>
+          <p class="prize-desc" id="uiPrize3Desc">Lindo kit completo de ferramentas para moto, indispensável em qualquer viagem.</p>
+        </div>
+      </div>
     </div>
 
     <!-- ─── INFO BAR ─── -->
@@ -1274,6 +1286,32 @@
                 <img id="previewPrize2Img" src="" style="max-width:100%; max-height:100px; display:none; border-radius:var(--radius-sm); border:1px solid var(--gray-border);">
               </div>
             </div>
+
+            <!-- Premio 3 -->
+            <div style="background-color:rgba(255,255,255,0.02); border:1px solid var(--gray-border); border-radius:var(--radius-md); padding:20px;">
+              <h4 style="font-family:var(--font-display); color:var(--primary); font-size:16px; margin-bottom:16px; border-bottom:1px solid var(--gray-border); padding-bottom:8px;">🎁 3º Prêmio</h4>
+              <div class="form-group">
+                <label class="form-label" for="cfgPrize3Title">Título do Prêmio</label>
+                <input type="text" id="cfgPrize3Title" class="form-input" placeholder="Ex: Kit Ferramentas">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="cfgPrize3Desc">Descrição</label>
+                <textarea id="cfgPrize3Desc" class="form-input" style="height:60px; resize:vertical;"></textarea>
+              </div>
+              <div class="form-group" style="display:flex; align-items:flex-end; gap:10px;">
+                <div style="flex:1;">
+                  <label class="form-label" for="cfgPrize3Img">URL ou Caminho da Imagem</label>
+                  <input type="text" id="cfgPrize3Img" class="form-input" placeholder="kit-ferramentas.png">
+                </div>
+                <div>
+                  <input type="file" id="filePrize3Img" accept="image/*" style="display:none" onchange="convertImageToBase64(event, 'cfgPrize3Img', 'previewPrize3Img')">
+                  <button class="btn-copy" onclick="document.getElementById('filePrize3Img').click()" style="padding:10px; height:42px;">Escolher Arquivo 📁</button>
+                </div>
+              </div>
+              <div style="margin-top:10px;">
+                <img id="previewPrize3Img" src="" style="max-width:100%; max-height:100px; display:none; border-radius:var(--radius-sm); border:1px solid var(--gray-border);">
+              </div>
+            </div>
             
             <div style="border-top:1px solid var(--gray-border); padding-top:14px; margin-top:10px;">
               <button class="btn-checkout" onclick="saveAdminSettings()" style="width:100%; border-radius:var(--radius-sm);">Salvar Configurações e Prêmios 💾</button>
@@ -1315,6 +1353,9 @@
     let prize2Img = "COMRPESSOR.png";
     let prize2Title = "Compressor Portátil";
     let prize2Desc = "Mini compressor portátil inteligente para encher pneus de moto, carro e bicicleta rapidamente.";
+    let prize3Img = "kit-ferramentas.png";
+    let prize3Title = "Kit Ferramentas";
+    let prize3Desc = "Lindo kit completo de ferramentas para moto, indispensável em qualquer viagem.";
 
     // ─────── INICIALIZAÇÃO DE DADOS ───────
     function loadState() {
@@ -1354,6 +1395,9 @@
       if (localStorage.getItem('raffle_p2_img')) prize2Img = localStorage.getItem('raffle_p2_img');
       if (localStorage.getItem('raffle_p2_title')) prize2Title = localStorage.getItem('raffle_p2_title');
       if (localStorage.getItem('raffle_p2_desc')) prize2Desc = localStorage.getItem('raffle_p2_desc');
+      if (localStorage.getItem('raffle_p3_img')) prize3Img = localStorage.getItem('raffle_p3_img');
+      if (localStorage.getItem('raffle_p3_title')) prize3Title = localStorage.getItem('raffle_p3_title');
+      if (localStorage.getItem('raffle_p3_desc')) prize3Desc = localStorage.getItem('raffle_p3_desc');
     }
 
     function saveState() {
@@ -1738,10 +1782,14 @@
       document.getElementById('cfgPrize2Img').value = prize2Img;
       document.getElementById('cfgPrize2Title').value = prize2Title;
       document.getElementById('cfgPrize2Desc').value = prize2Desc;
+      document.getElementById('cfgPrize3Img').value = prize3Img;
+      document.getElementById('cfgPrize3Title').value = prize3Title;
+      document.getElementById('cfgPrize3Desc').value = prize3Desc;
       
       if(bannerImg.startsWith('data:')) { document.getElementById('previewBannerImg').src = bannerImg; document.getElementById('previewBannerImg').style.display = 'block'; }
       if(prize1Img.startsWith('data:')) { document.getElementById('previewPrize1Img').src = prize1Img; document.getElementById('previewPrize1Img').style.display = 'block'; }
       if(prize2Img.startsWith('data:')) { document.getElementById('previewPrize2Img').src = prize2Img; document.getElementById('previewPrize2Img').style.display = 'block'; }
+      if(prize3Img.startsWith('data:')) { document.getElementById('previewPrize3Img').src = prize3Img; document.getElementById('previewPrize3Img').style.display = 'block'; }
 
       // Firebase
       document.getElementById('cfgDbUrl').value = localStorage.getItem('raffle_db_url') || 'https://ararasmc-2025-default-rtdb.firebaseio.com';
@@ -1780,6 +1828,9 @@
       prize2Img = document.getElementById('cfgPrize2Img').value.trim() || prize2Img;
       prize2Title = document.getElementById('cfgPrize2Title').value.trim() || prize2Title;
       prize2Desc = document.getElementById('cfgPrize2Desc').value.trim() || prize2Desc;
+      prize3Img = document.getElementById('cfgPrize3Img').value.trim() || prize3Img;
+      prize3Title = document.getElementById('cfgPrize3Title').value.trim() || prize3Title;
+      prize3Desc = document.getElementById('cfgPrize3Desc').value.trim() || prize3Desc;
 
       localStorage.setItem('raffle_price', PRICE);
       localStorage.setItem('raffle_date', SORTEIO_DATE);
@@ -1792,6 +1843,9 @@
       localStorage.setItem('raffle_p2_img', prize2Img);
       localStorage.setItem('raffle_p2_title', prize2Title);
       localStorage.setItem('raffle_p2_desc', prize2Desc);
+      localStorage.setItem('raffle_p3_img', prize3Img);
+      localStorage.setItem('raffle_p3_title', prize3Title);
+      localStorage.setItem('raffle_p3_desc', prize3Desc);
 
       // Sincroniza nuvem
       if (firebaseDb && isDbConnected) {
@@ -1806,6 +1860,9 @@
         firebaseDb.ref('raffle/config/prize2Img').set(prize2Img);
         firebaseDb.ref('raffle/config/prize2Title').set(prize2Title);
         firebaseDb.ref('raffle/config/prize2Desc').set(prize2Desc);
+        firebaseDb.ref('raffle/config/prize3Img').set(prize3Img);
+        firebaseDb.ref('raffle/config/prize3Title').set(prize3Title);
+        firebaseDb.ref('raffle/config/prize3Desc').set(prize3Desc);
       }
 
       applyUIConfigs();
@@ -1847,6 +1904,13 @@
       if (elPrize2Title) elPrize2Title.innerText = prize2Title;
       const elPrize2Desc = document.getElementById('uiPrize2Desc');
       if (elPrize2Desc) elPrize2Desc.innerText = prize2Desc;
+      
+      const elPrize3Img = document.getElementById('uiPrize3Img');
+      if (elPrize3Img) elPrize3Img.src = prize3Img;
+      const elPrize3Title = document.getElementById('uiPrize3Title');
+      if (elPrize3Title) elPrize3Title.innerText = prize3Title;
+      const elPrize3Desc = document.getElementById('uiPrize3Desc');
+      if (elPrize3Desc) elPrize3Desc.innerText = prize3Desc;
     }
 
     function confirmResetRaffle() {
@@ -2201,6 +2265,21 @@
           if (data.config.prize2Desc !== undefined && data.config.prize2Desc !== prize2Desc) {
             prize2Desc = data.config.prize2Desc;
             localStorage.setItem('raffle_p2_desc', prize2Desc);
+            hasUpdates = true;
+          }
+          if (data.config.prize3Img !== undefined && data.config.prize3Img !== prize3Img) {
+            prize3Img = data.config.prize3Img;
+            localStorage.setItem('raffle_p3_img', prize3Img);
+            hasUpdates = true;
+          }
+          if (data.config.prize3Title !== undefined && data.config.prize3Title !== prize3Title) {
+            prize3Title = data.config.prize3Title;
+            localStorage.setItem('raffle_p3_title', prize3Title);
+            hasUpdates = true;
+          }
+          if (data.config.prize3Desc !== undefined && data.config.prize3Desc !== prize3Desc) {
+            prize3Desc = data.config.prize3Desc;
+            localStorage.setItem('raffle_p3_desc', prize3Desc);
             hasUpdates = true;
           }
         }
